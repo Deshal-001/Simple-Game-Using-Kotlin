@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="400dp"
+    android:layout_centerHorizontal="true"
+    android:gravity="center"
+    android:background="@color/teal_700"
+    android:orientation="vertical"
+    android:overlapAnchor="false">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="320dp"
+        android:layout_height="398dp"
+        android:layout_margin="30dp"
+        android:layout_marginStart="24dp"
+        android:background="#F6F4F4"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="1dp">
+<Space
+    android:layout_width="20dp"
+    android:layout_height="25dp"/>
+        <ImageView
+            android:id="@+id/userImage"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/user" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="left"
+            android:text="@string/st_Name"
+            android:textColor="@color/teal_700"
+            android:textSize="15dp"
+            android:textStyle="bold"
+
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="68dp"
+            tools:layout_editor_absoluteY="301dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="left"
+            android:text="@string/iit_id"
+            android:textColor="@color/teal_700"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="67dp"
+            tools:layout_editor_absoluteY="368dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="left"
+            android:text="@string/uow_id"
+            android:textColor="@color/teal_700"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="68dp"
+            tools:layout_editor_absoluteY="333dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="left"
+            android:text="I confirm that I understand what plagiarism is and have read and understood the section on Assessment Offences in the Essential
+     Information for Students.The work that I have submitted is
+     entirely my own. Any work from other authors is duly referenced
+     and acknowledged."
+
+            android:textColor="@color/teal_700"
+            android:textSize="15dp"
+
+            android:textStyle="italic"
+            tools:ignore="HardcodedText,MissingConstraints"
+            tools:layout_editor_absoluteX="68dp"
+            tools:layout_editor_absoluteY="301dp" />
+
+
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

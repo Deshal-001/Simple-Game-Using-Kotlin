@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_700"
+    android:gravity="center"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+
+
+
+    <Button
+        android:id="@+id/newgame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:textColor="#FFFDFDFC"
+        android:textSize="18sp"
+        app:strokeWidth="3dp"
+        android:padding="10dp"
+        app:strokeColor="#FFFDFDFC"
+
+        android:text="New Game" />
+
+        <Button
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:textColor="#FFFDFDFC"
+            android:textSize="18sp"
+            app:strokeWidth="3dp"
+            android:padding="10dp"
+            app:strokeColor="#FFFDFDFC"
+
+
+            android:text="About" />
+
+
+
+</LinearLayout>
