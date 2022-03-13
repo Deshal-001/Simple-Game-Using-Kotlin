@@ -11,8 +11,13 @@ class ArithmeticExpression {
 
    var output:String=""
    var tot:Int=0
+      get() = field
+      set(value) {
+         field = value
+      }
+
    fun generate_arithmeticExpression(view: TextView){
-      var length=(1..4).random(); //number of numbers
+      var length=(1..3).random(); //number of numbers
       var a:Int=0
       var b:Int=0
       var c:Int=0
@@ -26,7 +31,7 @@ class ArithmeticExpression {
 
       var numbers = intArrayOf(a,b,c,d,e)
       for(i in 0..length){
-         numbers[i]=(1..10).random()
+         numbers[i]=(1..20).random()
       } //add numbers
 
 
@@ -37,39 +42,54 @@ class ArithmeticExpression {
 
 
       var arith_op=arrayOf("/","*","+","-")
-      println(Arrays.toString(numbers))
-      println(length+1)
+    //  println(Arrays.toString(numbers))
+     // println(length+1)
 
-      println("x= "+x)
-      println("y= "+y)
-      output=("("+x.toString()+arith_op[num]+y.toString()+")")
+    ////  println("x= "+x)
+     // println("y= "+y)
+      output=(x.toString()+arith_op[num]+y.toString())
 
 
       tot=generate_expression_(x,y,num)
-      println(output)
-      println("Previous tot = "+tot)
+    //  println(output)
+     // println("Previous tot = "+tot)
 
 
-      if(length>2){
-         y=numbers[2]
-         x=tot
-         num=(0..3).random()
-         tot=generate_expression_(x,y,num)
+      if(length+1>2){
+
+         var i=2
+         while(i!=length+1){
+            y=numbers[i]
+            x=tot
+            num=(0..3).random()
+            tot=generate_expression_(x,y,num)
+           // println(output+arith_op[num]+y.toString())
+          //  println("New tot = "+tot)
+
+            output= "("+output+")"+arith_op[num]+y.toString()
+
+            i++
+
+         }
+
+
+
       }
-      println("("+output+")"+arith_op[num]+y.toString())
-      println("New tot = "+tot)
-
-      output=output+arith_op[num]+y.toString()
-
-
-
 
 
       view.text=output
    }
+
+
+   fun generate_expression_(x: Int, y: Int,num:Int): Int {
+      var expression=intArrayOf(x.div(y),x.times(y),x.plus(y),x.minus(y))
+      return expression[num]
+   }
+
 }
 
-fun generate_expression_(x: Int, y: Int,num:Int): Int {
-   var expression=intArrayOf(x.div(y),x.times(y),x.plus(y),x.minus(y))
-   return expression[num]
-}
+
+
+
+
+
