@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         newgameButton.setOnClickListener {
             intent= Intent(this,NewGame_Activity::class.java)
             startActivity(intent)
+
         }
     }
 

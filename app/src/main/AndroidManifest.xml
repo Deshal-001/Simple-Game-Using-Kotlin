@@ -11,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseWork">
         <activity
+            android:name=".Marks_Activity"
+            android:exported="true" />
+        <activity
             android:name=".NewGame_Activity"
+            android:configChanges="orientation|screenSize"
             android:exported="true" />
         <activity
             android:name=".about"
@@ -26,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
