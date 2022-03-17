@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseWork">
         <activity
-            android:name=".Marks_Activity"
+            android:name=".MarksActivity"
             android:exported="true" />
         <activity
-            android:name=".NewGame_Activity"
+            android:name=".GameActivity"
             android:configChanges="orientation|screenSize"
             android:exported="true" />
         <activity

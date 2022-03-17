@@ -4,7 +4,7 @@ import android.widget.TextView
 import java.util.*
 
 class ArithmeticExpression {
-   private var length:Int=1
+  // private var length:Int=1
    var  arith_exp_one: String? =null
    var  arith_exp_two: String? =null
 
@@ -16,9 +16,9 @@ class ArithmeticExpression {
    var y:Int=1
    var arith_op=arrayOf("/","*","+","-")
 
-   fun generate_arithmeticExpression(view: TextView){
+   fun generate_arithmeticExpression(view: TextView,ex_length:Int){
 
-      var length=(1..3).random(); //number of numbers
+      var length=ex_length; //number of numbers
       var a:Int=0
       var b:Int=0
       var c:Int=0
@@ -128,7 +128,7 @@ class ArithmeticExpression {
    fun check_divisible(x:Int,y:Int):Boolean{
       var divisible:Boolean
       var answer=x.rem(y)
-      if (answer==0){divisible=true}
+      if (answer==0 && answer<100){divisible=true}
       else{divisible=false}
       println(divisible)
       return divisible
