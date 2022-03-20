@@ -7,86 +7,122 @@
     android:layout_margin="5dp"
     tools:context=".GameActivity">
 
-    <TextView
-        android:id="@+id/expression1"
-        android:layout_width="162dp"
-        android:layout_height="55dp"
-        android:text="(1+2)*5-6"
-        android:textSize="16dp"
-        android:textStyle="bold"
+    <LinearLayout
+        android:layout_width="585dp"
+        android:layout_height="70dp"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintVertical_bias="0.343"
+        tools:ignore="MissingConstraints">
 
-    <TextView
-        android:id="@+id/expression2"
-        android:layout_width="157dp"
-        android:layout_height="52dp"
-        android:text="(3*11)-1"
-        android:textSize="16dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.717"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        <TextView
+            android:id="@+id/expression1"
+            android:layout_width="230dp"
+            android:layout_height="55dp"
+            android:fontFamily="sans-serif-black"
+            android:text="(1+2)*5-6"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/greater_button"
-        android:layout_width="114dp"
-        android:layout_height="48dp"
-        android:text="GREATER"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.043"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538"
-        tools:ignore="MissingConstraints" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/less_button2"
-        android:layout_width="114dp"
-        android:layout_height="48dp"
-        android:text="LESS"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.884"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/expression2"
+            android:layout_width="230dp"
+            android:layout_height="55dp"
+            android:fontFamily="sans-serif-black"
+            android:text="(3*11)-1"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/equal_button"
-        android:layout_width="94dp"
-        android:layout_height="48dp"
-        android:text="=="
+
+    <LinearLayout
+        android:layout_width="503dp"
+        android:layout_height="63dp"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.538"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.863">
+
+        <Button
+            android:id="@+id/greater_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GREATER"
+            app:cornerRadius="15dp"
+            tools:ignore="MissingConstraints" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/equal_button"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="=="
+            app:cornerRadius="15dp"
+            tools:ignore="MissingConstraints" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/less_button2"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="LESS"
+            app:cornerRadius="15dp"
+            tools:ignore="MissingConstraints" />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/time_view"
         android:layout_width="152dp"
         android:layout_height="50dp"
         android:fontFamily="@font/bebas_neue"
+        android:gravity="center_horizontal"
         android:text="00:00"
         android:textAlignment="center"
         android:textSize="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102" />
+        app:layout_constraintVertical_bias="0.096" />
+
+    <TextView
+        android:id="@+id/text_c"
+        android:layout_width="203dp"
+        android:layout_height="58dp"
+        android:fontFamily="@font/bungee"
+        android:gravity="center_horizontal"
+        android:text="Game On !"
+        android:textAlignment="center"
+        android:textSize="30dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.536" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

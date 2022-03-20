@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseWork">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".MarksActivity"
             android:exported="true" />
         <activity

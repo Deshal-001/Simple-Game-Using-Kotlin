@@ -1,5 +1,6 @@
 package com.example.coursework
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ class GameActivity : AppCompatActivity() {
     var timer = start
     lateinit var countDownTimer: CountDownTimer
     var correct_answers = 0
+    var incorrect_answers=0
 
     val TAG = "MyActivity"
 
@@ -30,28 +32,26 @@ class GameActivity : AppCompatActivity() {
         val greater_button = findViewById<Button>(R.id.greater_button)
         val lower_button = findViewById<Button>(R.id.less_button2)
         val equal_button = findViewById<Button>(R.id.equal_button)
+        val answer_text= findViewById<TextView>(R.id.text_c)
         setTextTimer()
         startTimer()
-
-
-
-
-
-
 
         generate_expression(first_expression, second_expression)
         // second_expression.text= "Expression 2
 
         greater_button.setOnClickListener {
+            textAnimation(answer_text)
             set_message("greater")
 
             generate_expression(first_expression, second_expression)
         }
         lower_button.setOnClickListener {
+            textAnimation(answer_text)
             set_message("lower")
             generate_expression(first_expression, second_expression)
         }
         equal_button.setOnClickListener {
+            textAnimation(answer_text)
             set_message("equal")
             generate_expression(first_expression, second_expression)
         }
@@ -102,7 +102,7 @@ class GameActivity : AppCompatActivity() {
         val length1=(1..3).random()
         var length2=(1..3).random()
         ArithmeticExpression1.generate_arithmeticExpression(ex1,length1)
-        println("First Tot: " + ArithmeticExpression1.tot)
+
 
         if (length1==length2){
             while (length1==length2){
@@ -112,12 +112,20 @@ class GameActivity : AppCompatActivity() {
         }
 
         ArithmeticExpression2.generate_arithmeticExpression(ex2,length2)
-        println("Second Tot: " + ArithmeticExpression2.tot)
+
     }
 
+    @SuppressLint("SetTextI18n", "ResourceAsColor")
     fun set_message(condition: String) {
+        var answer_text=findViewById<TextView>(R.id.text_c)
+
+
         if (output_result() == condition) {
-            println("Correct !")
+            answer_text.setBackgroundResource(R.color.teal_200)
+            answer_text.text = "CORRECT !"
+
+
+
             correct_answers++
             if (correct_answers!=0 && correct_answers%5==0){
                 restTimer()
@@ -125,11 +133,14 @@ class GameActivity : AppCompatActivity() {
             }
 
 
-            Toast.makeText(applicationContext, "Correct ! $correct_answers", Toast.LENGTH_SHORT)
-                .show()
+            //Toast.makeText(applicationContext, "Correct ! $correct_answers", Toast.LENGTH_SHORT)
+               // .show()
         } else {
-            println("Wrong !")
-            Toast.makeText(applicationContext, "Wrong !", Toast.LENGTH_SHORT).show()
+            answer_text.setBackgroundResource(R.color.red)
+            answer_text.text = "WRONG !"
+
+            incorrect_answers++
+            //Toast.makeText(applicationContext, "Wrong !", Toast.LENGTH_SHORT).show()
 
         }
 
@@ -147,9 +158,11 @@ class GameActivity : AppCompatActivity() {
                 ).show()
 
                 val marks = correct_answers.toString()
+                val incorrect_ans=incorrect_answers.toString()
 
                 intent = Intent(this@GameActivity, MarksActivity::class.java).also {
-                    it.putExtra("EXTRA_MESSAGE", marks)
+                    it.putExtra("CORRECT_ANS", marks)
+                    it.putExtra("INCORRECT_ANS",incorrect_ans)
                     startActivity(it)
                     finish()
                 }
@@ -187,5 +200,15 @@ class GameActivity : AppCompatActivity() {
         time.setText(format)
     }
 
+    fun textAnimation(textView: TextView){
+        textView.animate().apply {
+            duration =550
+            rotationYBy(360f)
+
+        }.start()
+    }
+
 
 }
+
+

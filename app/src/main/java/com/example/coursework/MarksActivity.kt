@@ -1,5 +1,6 @@
 package com.example.coursework
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -12,12 +13,24 @@ class MarksActivity : AppCompatActivity() {
 
     val TAG = "MyActivity"
 
+
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_marks)
 
-        val marks=intent.getStringExtra("EXTRA_MESSAGE")
-        var total=findViewById<TextView>(R.id.marks_text).apply { text=marks.toString() }
+         val correctAns=intent.getStringExtra("CORRECT_ANS")
+         val incorrect_ans=intent.getStringExtra("INCORRECT_ANS")
+
+        var total=Integer.parseInt(correctAns.toString())+Integer.parseInt(incorrect_ans.toString())
+
+        var marks=Math.round(((Integer.parseInt(correctAns.toString()).toDouble())/total)* 100)
+        Toast.makeText(this,Integer.parseInt(correctAns.toString()).toString(),Toast.LENGTH_SHORT).show()
+
+
+        var correct=findViewById<TextView>(R.id.correct_text).apply { text=correctAns.toString() }
+        var incorrect=findViewById<TextView>(R.id.incorrect_text).apply { text=incorrect_ans.toString() }
+        var marksText=findViewById<TextView>(R.id.marks).apply { text=("$marks%")}
 
         val new_gamebutton=findViewById<Button>(R.id.play_button)
         val home_button=findViewById<Button>(R.id.home_button)
@@ -25,12 +38,10 @@ class MarksActivity : AppCompatActivity() {
         new_gamebutton.setOnClickListener {
             intent=Intent(this,GameActivity::class.java)
             startActivity(intent)
-
         }
         home_button.setOnClickListener {
-            intent=Intent(this,MainActivity::class.java)
+            intent=Intent(this,MenuActivity::class.java)
             startActivity(intent)
-
         }
 
     }
@@ -50,7 +61,7 @@ class MarksActivity : AppCompatActivity() {
 
     override fun onStop() {
         Toast.makeText(applicationContext, "onStop", Toast.LENGTH_SHORT).show()
-        finish()
+
         Log.i(TAG, "onStop")
         super.onStop()
     }
@@ -58,7 +69,6 @@ class MarksActivity : AppCompatActivity() {
     override fun onDestroy() {
         Toast.makeText(applicationContext, "onDestroy", Toast.LENGTH_SHORT).show()
         Log.i(TAG, "onDestroy")
-
         super.onDestroy()
 
     }

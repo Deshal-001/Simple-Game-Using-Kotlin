@@ -4,38 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0c2d1c"
+    android:background="@drawable/gradient2"
     tools:context=".MarksActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="130dp"
-        android:layout_height="87dp"
-        android:fontFamily="@font/metal_mania"
-        android:text="Total :"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="40dp"
+
+    <LinearLayout
+        android:layout_width="254dp"
+        android:layout_height="141dp"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintHorizontal_bias="0.033"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.251">
 
-    <TextView
-        android:id="@+id/marks_text"
-        android:layout_width="117dp"
-        android:layout_height="120dp"
-        android:fontFamily="@font/bangers"
-        android:text="10"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="85dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/metal_mania"
+            android:text="Total :"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="40dp" />
+
+        <TextView
+            android:id="@+id/marks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/allerta_stencil"
+            android:text="50%"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="50dp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/home_button"
@@ -45,7 +49,7 @@
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.835"
+        app:layout_constraintHorizontal_bias="0.679"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.887" />
@@ -58,8 +62,111 @@
         app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.182"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.887" />
+
+    <LinearLayout
+        android:layout_width="379dp"
+        android:layout_height="172dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.803"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.284">
+
+        <LinearLayout
+            android:layout_width="331dp"
+            android:layout_height="78dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="138dp"
+                android:layout_height="57dp"
+                android:text=" Correct"
+                android:textAlignment="center"
+                android:textColor="@color/ic_launcher_background"
+                android:textSize="25dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text=":"
+                android:textColor="#F4EEEE"
+                android:textSize="30dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/correct_text"
+                android:layout_width="86dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/allerta_stencil"
+                android:text="10"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="35dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="84dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="139dp"
+                android:layout_height="59dp"
+                android:text=" Incorrect"
+                android:textAlignment="center"
+                android:textColor="#FFFDFD"
+                android:textSize="25dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="57dp"
+                android:layout_weight="1"
+                android:scrollbarSize="30dp"
+                android:text=":"
+                android:textColor="#FAF5F5"
+                android:textSize="30dp" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/incorrect_text"
+                android:layout_width="49dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/allerta_stencil"
+                android:text="05"
+                android:textAlignment="center"
+                android:textColor="#F3EEEE"
+                android:textSize="35dp" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,34 +12,7 @@
 
 
 
-    <Button
-        android:id="@+id/newgame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        style="@style/Widget.Material3.Button.OutlinedButton"
-        android:textColor="#FFFDFDFC"
-        android:textSize="18sp"
-        app:strokeWidth="3dp"
-        android:padding="10dp"
-        app:strokeColor="#FFFDFDFC"
 
-        android:text="New Game" />
-
-        <Button
-            android:id="@+id/about"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:textColor="#FFFDFDFC"
-            android:textSize="18sp"
-            app:strokeWidth="3dp"
-            android:padding="10dp"
-            app:strokeColor="#FFFDFDFC"
-
-
-            android:text="About" />
 
 
 
