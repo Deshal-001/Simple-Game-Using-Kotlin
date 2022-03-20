@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.content.Intent
 import android.util.Log
 import android.widget.Button
+import android.widget.RatingBar
 import android.widget.Toast
 
 class MarksActivity : AppCompatActivity() {
@@ -18,6 +19,7 @@ class MarksActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_marks)
+        supportActionBar?.hide()  //hide action bar
 
          val correctAns=intent.getStringExtra("CORRECT_ANS")
          val incorrect_ans=intent.getStringExtra("INCORRECT_ANS")
@@ -34,6 +36,46 @@ class MarksActivity : AppCompatActivity() {
 
         val new_gamebutton=findViewById<Button>(R.id.play_button)
         val home_button=findViewById<Button>(R.id.home_button)
+
+        val ratingBar=findViewById<RatingBar>(R.id.ratingBar)
+        ratingBar.stepSize=1f
+
+        when {
+            marks<1->{
+                ratingBar.rating= 0F
+            }
+            marks<10->{
+                ratingBar.rating=0.5f
+            }
+            marks<25 -> {
+                ratingBar.rating=1f
+            }
+            marks<35 -> {
+                ratingBar.rating=1.5f
+            }
+            marks<50 -> {
+                ratingBar.rating=2f
+            }
+            marks<65 -> {
+                ratingBar.rating=2.5f
+            }
+            marks<75 -> {
+                ratingBar.rating=3f
+            }
+            marks<85 -> {
+                ratingBar.rating=3.5f
+            }
+            marks<90 -> {
+                ratingBar.rating=4f
+            }
+            marks<95 -> {
+                ratingBar.rating=4.5f
+            }
+            marks>90 -> {
+                ratingBar.rating=5f
+            }
+        }
+
 
         new_gamebutton.setOnClickListener {
             intent=Intent(this,GameActivity::class.java)
@@ -72,4 +114,6 @@ class MarksActivity : AppCompatActivity() {
         super.onDestroy()
 
     }
+
+
 }

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
+    android:background="@drawable/gradient2"
     tools:context=".GameActivity">
 
     <LinearLayout
@@ -24,25 +25,32 @@
             android:layout_width="230dp"
             android:layout_height="55dp"
             android:fontFamily="sans-serif-black"
+            android:gravity="center"
             android:text="(1+2)*5-6"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
 
         <Space
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            tools:ignore="InefficientWeight" />
 
         <TextView
             android:id="@+id/expression2"
             android:layout_width="230dp"
             android:layout_height="55dp"
             android:fontFamily="sans-serif-black"
+            android:gravity="center"
             android:text="(3*11)-1"
             android:textAlignment="center"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
 
@@ -52,10 +60,10 @@
         android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.863">
+        app:layout_constraintVertical_bias="0.952">
 
         <Button
             android:id="@+id/greater_button"
@@ -63,7 +71,7 @@
             android:layout_height="wrap_content"
             android:text="GREATER"
             app:cornerRadius="15dp"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="HardcodedText,MissingConstraints" />
 
         <Space
             android:layout_width="wrap_content"
@@ -76,7 +84,7 @@
             android:layout_height="wrap_content"
             android:text="=="
             app:cornerRadius="15dp"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="HardcodedText,MissingConstraints" />
 
         <Space
             android:layout_width="wrap_content"
@@ -89,40 +97,44 @@
             android:layout_height="wrap_content"
             android:text="LESS"
             app:cornerRadius="15dp"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="HardcodedText,MissingConstraints" />
     </LinearLayout>
-
 
     <TextView
         android:id="@+id/time_view"
         android:layout_width="152dp"
         android:layout_height="50dp"
         android:fontFamily="@font/bebas_neue"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:text="00:00"
         android:textAlignment="center"
-        android:textSize="36dp"
+        android:textColor="@color/white"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.096"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/text_c"
-        android:layout_width="203dp"
-        android:layout_height="58dp"
+        android:layout_width="202dp"
+        android:layout_height="73dp"
         android:fontFamily="@font/bungee"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:text="Game On !"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textColor="@color/white"
 
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.536" />
+        app:layout_constraintVertical_bias="0.556"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

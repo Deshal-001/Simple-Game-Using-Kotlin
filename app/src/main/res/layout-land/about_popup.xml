@@ -94,6 +94,15 @@
             tools:layout_editor_absoluteX="68dp"
             tools:layout_editor_absoluteY="301dp" />
 
+        <Button
+            android:id="@+id/close_button"
+            android:layout_width="105dp"
+            android:layout_height="38dp"
+            android:gravity="center"
+            android:minHeight="52dp"
+            android:text="Back"
+            app:cornerRadius="360sp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
 
     </LinearLayout>

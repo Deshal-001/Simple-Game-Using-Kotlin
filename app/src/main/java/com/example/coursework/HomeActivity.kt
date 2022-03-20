@@ -15,6 +15,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        supportActionBar?.hide()  //hide action bar
 
         val progressbar= findViewById<ProgressBar>(R.id.progressBar)
         setProgressbar(progressbar)

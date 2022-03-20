@@ -1,135 +1,134 @@
 package com.example.coursework
 
 import android.widget.TextView
-import java.util.*
 
 class ArithmeticExpression {
 
-    var output: String = ""
-    var tot: Int = 0
-
-    var x: Int = 0
-    var y: Int = 1
-    var opr:Int=0
-    var arith_op = arrayOf("/", "*", "+", "-")
-
-
-    fun generate_arithmeticExpression(view: TextView, ex_length: Int) {
-
-        var length = ex_length; //number of numbers
-        var a: Int = 0
-        var b: Int = 0
-        var c: Int = 0
-        var d: Int = 0
-        var e: Int = 0
+    var output: String = ""  //display text
+    var tot: Int = 0        //total
+    var x: Int = 0         //first number
+    var y: Int = 1   //second number
+    var opr: Int = 0    //operator
+    var arith_op = arrayOf("/", "*", "+", "-")  //array of operators
 
 
+    //function that generates arithmetic expressions
+    fun generateArithmeticexpression(view: TextView, ex_length: Int) {
+        //length of the expressions
+        var length = ex_length
+        var a = 0
+        var b = 0
+        var c = 0
+        var d = 0
+        var e = 0
+
+        //insert numbers to the array
         var numbers = intArrayOf(a, b, c, d, e)
         for (i in 0..length) {
+            //generate random numbers
             numbers[i] = (1..20).random()
-        } //add numbers
+        } //add random numbers
 
-
+        //generate random operator
         var num = (0..3).random()
+        //set the index of the operator
         set_opr(num)
+        //assign pre-generated values to x and y
         x = numbers[0]
         y = numbers[1]
-        tot = generate_expression_(get_x(), get_y(), num)
-        println(tot)
-
-
+        //get total
+        tot = generateExpression(get_x(), get_y(), num)
+        //get output
         output = (get_x().toString() + arith_op[get_opr()] + get_y().toString())
-        /** 3+2 **/
 
+        //check the length of the expression (random generated length)
         if (length + 1 > 2) {
+            //assign values to var i
             var i = 2
+            //loop until last number
             while (i != length + 1) {
                 y = numbers[i]
                 x = tot
+                //get random operator
                 num = (0..3).random()
                 set_opr(num)
-                tot = generate_expression_(x, y, get_opr())
-                println(tot)
+                tot = generateExpression(x, y, get_opr())
                 output = "(" + output + ")" + arith_op[get_opr()] + get_y().toString()
                 i++
             }
         }
+        //set text of the textview
         view.text = output
     }
 
-
-    fun generate_expression_(x: Int, y: Int, num: Int): Int {
+    //generate expressions
+    fun generateExpression(x: Int, y: Int, num: Int): Int {
+        //set bool
         var bool: Boolean
-        var answer: Int = 0
+        var answer = 0
         var yy = y
-        var xx=x
         if (num == 0) {
-            bool = check_divisible(x, y)
-            if (bool == true) {
+            //check whether is x subexpression
+            bool = checkDivisible(x, y)
+            if (bool) {
+                //generate expression
                 var expression = intArrayOf(x.div(y), x.times(y), x.plus(y), x.minus(y))
+                //assign values to answer var
                 answer = expression[num]
             } else {
-                while (bool == false) {
-                    yy = (1..20).random();
-                    bool = check_divisible(x, yy)
+                while (!bool) {
+                    //generate new random value for y
+                    yy = (1..20).random()
+                    //check whether is x subexpression
+                    bool = checkDivisible(x, yy)
                 }
+                //set value for y
                 set_y(yy)
 
                 var expression = intArrayOf(x.div(yy), x.times(yy), x.plus(yy), x.minus(yy))
                 answer = expression[num]
-
-
             }
+
         } else {
-            var total=0
-            var number=0
-            var bools=true
-            var expression = intArrayOf(x.div(get_y()), x.times(get_y()), x.plus(get_y()), x.minus(get_y()))
+            var total = 0
+            var number = 0
+            var bools = true
+            var expression =
+                intArrayOf(x.div(get_y()), x.times(get_y()), x.plus(get_y()), x.minus(get_y()))
             answer = expression[num]
-
-            if (answer>=100){
-                println("came broooooooo")
-                println("x :$x y:$y")
-
-                while(bools){
-                   // yy = 1;
-                    yy=(1..20).random()
-                    number=(0..2).random()
-                    println("operator : $number")
-
+            //check whether is the total lower than 100
+            if (answer >= 100) {
+                while (bools) {
+                    //generate random numbers for y
+                    yy = (1..20).random()
+                    //generate random operator
+                    number = (0..2).random()
+                    //generate expression
                     expression = intArrayOf(x.times(yy), x.plus(yy), x.minus(yy))
+                    //set total
                     total = expression[number]
-                    if(total<100){
-                        bools=false
+                    //check whether is the total lower than 100
+                    if (total < 100) {
+                        bools = false
                     }
-                    println("total in the loop : $total")
-                    //yy++
                 }
-                set_opr(number+1)
-                answer=total
+                //set operator
+                set_opr(number + 1)
+                //assign value for the answer
+                answer = total
+                //assign value for y
                 set_y(yy)
-                println("yy = $yy  x=$x")
-                println("Corrected : $answer")
-
             }
-
         }
-
-
-
-
         return answer
     }
 
-
-    fun check_divisible(x: Int, y: Int): Boolean {
+    //check subexpressions
+    fun checkDivisible(x: Int, y: Int): Boolean {
         var divisible: Boolean
+        //store remainder
         var answer = x.rem(y)
-        if (answer == 0 && answer < 100) {
-            divisible = true
-        } else {
-            divisible = false
-        }
+        divisible = answer == 0 && answer < 100
 
         return divisible
     }
@@ -143,18 +142,15 @@ class ArithmeticExpression {
         return y
     }
 
-    fun set_x(x: Int) {
-        this.x = x;
-    }
-
     fun get_x(): Int {
         return x
     }
-    fun set_opr(opr:Int){
-        this.opr=opr
+
+    fun set_opr(opr: Int) {
+        this.opr = opr
     }
 
-    fun get_opr():Int{
+    fun get_opr(): Int {
         return opr
     }
 

@@ -25,6 +25,7 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
+        supportActionBar?.hide()  //hide action bar
 
         val first_expression = findViewById<TextView>(R.id.expression1)
         val second_expression = findViewById<TextView>(R.id.expression2)
@@ -101,7 +102,7 @@ class GameActivity : AppCompatActivity() {
     fun generate_expression(ex1: TextView, ex2: TextView) {
         val length1=(1..3).random()
         var length2=(1..3).random()
-        ArithmeticExpression1.generate_arithmeticExpression(ex1,length1)
+        ArithmeticExpression1.generateArithmeticexpression(ex1,length1)
 
 
         if (length1==length2){
@@ -111,7 +112,7 @@ class GameActivity : AppCompatActivity() {
 
         }
 
-        ArithmeticExpression2.generate_arithmeticExpression(ex2,length2)
+        ArithmeticExpression2.generateArithmeticexpression(ex2,length2)
 
     }
 

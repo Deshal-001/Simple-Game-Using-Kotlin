@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/drawable/gradient1.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/gradient2.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.18385416666666668" />
+        <entry key="app/src/main/res/layout-land/about_popup.xml" value="0.40036947798686895" />
         <entry key="app/src/main/res/layout-land/activity_marks.xml" value="0.2892911853823923" />
         <entry key="app/src/main/res/layout-land/activity_menu.xml" value="0.2623456790123457" />
         <entry key="app/src/main/res/layout-land/activity_new_game.xml" value="0.25" />

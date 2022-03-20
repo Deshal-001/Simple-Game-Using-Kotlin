@@ -10,6 +10,7 @@ class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
+        supportActionBar?.hide()  //hide action bar
 
         val aboutButton = findViewById<Button>(R.id.about)
         val newgameButton = findViewById<Button>(R.id.newgame)
@@ -28,6 +29,7 @@ class MenuActivity : AppCompatActivity() {
 
     fun aboutPage(aboutButton: Button) {
         val window = PopupWindow(this)
+
         val view = layoutInflater.inflate(R.layout.about_popup, null)
         window.contentView = view
 
@@ -36,6 +38,7 @@ class MenuActivity : AppCompatActivity() {
             popUpWindow.show(supportFragmentManager, "About PopUp")
 
         }
+
 
     }
 }

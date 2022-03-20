@@ -4,39 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient2"
+    android:background="@drawable/gradient1"
     tools:context=".MarksActivity">
-
-    <Button
-        android:id="@+id/home_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.839"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
-
-    <Button
-        android:id="@+id/play_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        app:cornerRadius="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957" />
 
     <LinearLayout
         android:layout_width="336dp"
         android:layout_height="173dp"
         android:orientation="vertical"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,10 +26,10 @@
                 android:id="@+id/textView4"
                 android:layout_width="138dp"
                 android:layout_height="57dp"
-                android:text=" Correct"
+                android:text="@string/correct"
                 android:textAlignment="center"
                 android:textColor="@color/ic_launcher_background"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -68,7 +43,8 @@
                 android:layout_weight="1"
                 android:text=":"
                 android:textColor="#F4EEEE"
-                android:textSize="30dp" />
+                android:textSize="30sp"
+                tools:ignore="HardcodedText" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -80,10 +56,10 @@
                 android:layout_width="86dp"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/allerta_stencil"
-                android:text="10"
+                android:text="@string/_10"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="50dp" />
+                android:textSize="50sp" />
 
         </LinearLayout>
 
@@ -96,10 +72,10 @@
                 android:id="@+id/textView5"
                 android:layout_width="139dp"
                 android:layout_height="59dp"
-                android:text=" Incorrect"
+                android:text="@string/incorrect"
                 android:textAlignment="center"
                 android:textColor="#FFFDFD"
-                android:textSize="30dp" />
+                android:textSize="30sp" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -114,7 +90,8 @@
                 android:scrollbarSize="30dp"
                 android:text=":"
                 android:textColor="#FAF5F5"
-                android:textSize="30dp" />
+                android:textSize="30sp"
+                tools:ignore="HardcodedText" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -130,30 +107,32 @@
                 android:text="05"
                 android:textAlignment="center"
                 android:textColor="#F3EEEE"
-                android:textSize="50dp" />
+                android:textSize="50sp"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="254dp"
-        android:layout_height="141dp"
-        android:gravity="center"
+        android:id="@+id/linearLayout"
+        android:layout_width="251dp"
+        android:layout_height="140dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.118">
+        app:layout_constraintVertical_bias="0.115">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/metal_mania"
-            android:text="Total :"
+            android:text="@string/total"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="40dp" />
+            android:textSize="40sp" />
 
         <Space
             android:layout_width="match_parent"
@@ -164,9 +143,59 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/allerta_stencil"
-            android:text="50%"
+            android:text="@string/_50"
             android:textAlignment="center"
             android:textColor="@color/white"
-            android:textSize="50dp" />
+            android:textSize="50sp" />
+    </LinearLayout>
+
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:progressTint="@color/gold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.772"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <LinearLayout
+        android:layout_width="323dp"
+        android:layout_height="54dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.943">
+
+        <Button
+            android:id="@+id/play_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/play"
+            android:textColor="@color/white"
+            app:cornerRadius="15dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:ignore="InefficientWeight" />
+
+        <Button
+            android:id="@+id/home_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:textColor="@color/white"
+            app:cornerRadius="15dp"
+            app:strokeColor="@color/white"
+            app:strokeWidth="2dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
