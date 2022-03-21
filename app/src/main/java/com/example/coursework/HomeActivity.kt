@@ -17,59 +17,48 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         supportActionBar?.hide()  //hide action bar
 
-        val progressbar= findViewById<ProgressBar>(R.id.progressBar)
+        //creates progressbar
+        val progressbar = findViewById<ProgressBar>(R.id.progressBar)
         setProgressbar(progressbar)
-
 
 
     }
 
     override fun onStop() {
+        //end the context
         Toast.makeText(applicationContext, "onStop", Toast.LENGTH_SHORT).show()
         finish()
 
         super.onStop()
     }
 
-   fun setProgressbar(progressbar:ProgressBar){
-       progressbar.visibility = View.VISIBLE
-      var i=progressbar.progress
+     fun setProgressbar(progressbar: ProgressBar) {
+        //visible progressbar
+        progressbar.visibility = View.VISIBLE
+        var i = progressbar.progress
 
 
-       Thread(Runnable {
-           // this loop will run until the value of i becomes 99
-           while (i < 100) {
-               if(i==99){
-                   intent= Intent(this,MenuActivity::class.java)
-                   startActivity(intent)
-
-               }
-               i += 1
-               // Update the progress bar and display the current value
-               handler.post(Runnable {
-                   progressbar.progress = i
-                   // setting current progress to the textview
-
-               })
-               try {
-                   Thread.sleep(100)
-               } catch (e: InterruptedException) {
-                   e.printStackTrace()
-               }
-           }
-
-           // setting the visibility of the progressbar to invisible
-           // or you can use View.GONE instead of invisible
-           // View.GONE will remove the progressbar
-           progressbar.visibility = View.INVISIBLE
+        Thread(Runnable {
+            // this loop will run until the value of i becomes 99
+            while (i < 100) {
+                if (i == 99) {
+                    intent = Intent(this, MenuActivity::class.java)
+                    startActivity(intent)
+                }
+                i += 1
+                // Update the progress bar and display the current value
+                handler.post(Runnable {
+                    progressbar.progress = i
+                })
+                try {
+                    Thread.sleep(100)
+                } catch (e: InterruptedException) {
+                    e.printStackTrace()
+                }
+            }
+            progressbar.visibility = View.INVISIBLE
+        }).start()
 
 
-       }).start()
-
-
-
-
-
-
-   }
+    }
 }

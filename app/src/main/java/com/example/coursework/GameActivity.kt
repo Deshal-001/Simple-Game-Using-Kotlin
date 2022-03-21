@@ -8,63 +8,82 @@ import android.os.CountDownTimer
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 
 class GameActivity : AppCompatActivity() {
+    //generate first arithmetic expression
     val ArithmeticExpression1 = ArithmeticExpression()
+
+    //generate second arithmetic expression
     val ArithmeticExpression2 = ArithmeticExpression()
+
+    //set satrting time
     val start = 50_000L
     var timer = start
-    lateinit var countDownTimer: CountDownTimer
-    var correct_answers = 0
-    var incorrect_answers=0
 
+    //creates countdown timer
+    lateinit var countDownTimer: CountDownTimer
+
+    //store correct answers
+    var correctAnswers = 0
+
+    //store incorrect answers
+    var incorrectAnswers = 0
+
+    //assign values to tag var
     val TAG = "MyActivity"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_game)
-        supportActionBar?.hide()  //hide action bar
+        //hide action bar
+        supportActionBar?.hide()
 
-        val first_expression = findViewById<TextView>(R.id.expression1)
-        val second_expression = findViewById<TextView>(R.id.expression2)
-
-        val greater_button = findViewById<Button>(R.id.greater_button)
-        val lower_button = findViewById<Button>(R.id.less_button2)
-        val equal_button = findViewById<Button>(R.id.equal_button)
-        val answer_text= findViewById<TextView>(R.id.text_c)
+        //creates text view for display expression
+        val firstExpression = findViewById<TextView>(R.id.expression1)
+        val secondExpression = findViewById<TextView>(R.id.expression2)
+        //creates buttons
+        val greaterButton = findViewById<Button>(R.id.greater_button)
+        val lowerButton = findViewById<Button>(R.id.less_button2)
+        val equalButton = findViewById<Button>(R.id.equal_button)
+        //creates text view for display correctness of the answer
+        val answerText = findViewById<TextView>(R.id.text_c)
+        //set and start the timer
         setTextTimer()
         startTimer()
 
-        generate_expression(first_expression, second_expression)
-        // second_expression.text= "Expression 2
+        //generate expressions
+        generate_expression(firstExpression, secondExpression)
 
-        greater_button.setOnClickListener {
-            textAnimation(answer_text)
-            set_message("greater")
+        //greater button
+        greaterButton.setOnClickListener {
+            textAnimation(answerText)
+            setMessage("greater")
+            //set text
 
-            generate_expression(first_expression, second_expression)
+            generate_expression(firstExpression, secondExpression)
         }
-        lower_button.setOnClickListener {
-            textAnimation(answer_text)
-            set_message("lower")
-            generate_expression(first_expression, second_expression)
+        //lower button
+        lowerButton.setOnClickListener {
+            textAnimation(answerText)
+            setMessage("lower")
+            //set text
+            generate_expression(firstExpression, secondExpression)
         }
-        equal_button.setOnClickListener {
-            textAnimation(answer_text)
-            set_message("equal")
-            generate_expression(first_expression, second_expression)
+        //equal button
+        equalButton.setOnClickListener {
+            textAnimation(answerText)
+            setMessage("equal")
+            //set text
+            generate_expression(firstExpression, secondExpression)
         }
 
 
     }
 
     override fun onResume() {
-
         Log.i(TAG, "On Resume")
         super.onResume()
-
     }
 
     override fun onPause() {
@@ -87,84 +106,93 @@ class GameActivity : AppCompatActivity() {
 
     }
 
-    fun output_result(): String {
+    //evaluate expressions
+    fun outputResult(): String {
         var result = ""
-        if (ArithmeticExpression1.tot > ArithmeticExpression2.tot) {
-            result = "greater"
-        } else if (ArithmeticExpression1.tot < ArithmeticExpression2.tot) {
-            result = "lower"
-        } else {
-            result = "equal"
+        result = when {
+            //check first expression is greater than second
+            ArithmeticExpression1.tot > ArithmeticExpression2.tot -> {
+                "greater"
+            }
+            //check first expression is lower than second
+            ArithmeticExpression1.tot < ArithmeticExpression2.tot -> {
+                "lower"
+            }
+            //check first expression is greater than second
+            else -> {
+                "equal"
+            }
         }
+        //return whether expression 1 greater,equal or lower than the second one
         return result
     }
 
+    //generates the lengths of the expressions randomly
     fun generate_expression(ex1: TextView, ex2: TextView) {
-        val length1=(1..3).random()
-        var length2=(1..3).random()
-        ArithmeticExpression1.generateArithmeticexpression(ex1,length1)
+        //assign random values to variables
+        val length1 = (1..3).random()
+        var length2 = (1..3).random()
+        ArithmeticExpression1.generateArithmeticexpression(ex1, length1)
 
-
-        if (length1==length2){
-            while (length1==length2){
-                 length2=(1..3).random()
+        // check whether the lengths are same or not
+        if (length1 == length2) {
+            while (length1 == length2) {
+                length2 = (1..3).random()
             }
 
         }
+        //generate second expression
 
-        ArithmeticExpression2.generateArithmeticexpression(ex2,length2)
+        ArithmeticExpression2.generateArithmeticexpression(ex2, length2)
 
     }
 
     @SuppressLint("SetTextI18n", "ResourceAsColor")
-    fun set_message(condition: String) {
-        var answer_text=findViewById<TextView>(R.id.text_c)
+    fun setMessage(condition: String) {
+        //set text view
+        val answerText = findViewById<TextView>(R.id.text_c)
 
-
-        if (output_result() == condition) {
-            answer_text.setBackgroundResource(R.color.teal_200)
-            answer_text.text = "CORRECT !"
-
-
-
-            correct_answers++
-            if (correct_answers!=0 && correct_answers%5==0){
+        //check condition
+        if (outputResult() == condition) {
+            answerText.setBackgroundResource(R.color.teal_200)
+            //if condition true, set text as corrects
+            answerText.text = "CORRECT !"
+            //increase the number of correct answers by one
+            correctAnswers++
+            if (correctAnswers != 0 && correctAnswers % 5 == 0) {
+                //if user enters 5 correct answer, 10 seconds will add
                 restTimer()
                 startTimer()
             }
 
-
-            //Toast.makeText(applicationContext, "Correct ! $correct_answers", Toast.LENGTH_SHORT)
-               // .show()
         } else {
-            answer_text.setBackgroundResource(R.color.red)
-            answer_text.text = "WRONG !"
+            //if the condition is false set text as wrong
+            answerText.setBackgroundResource(R.color.red)
+            answerText.text = "WRONG !"
+            //increase incorrect answers variable by one
+            incorrectAnswers++
 
-            incorrect_answers++
-            //Toast.makeText(applicationContext, "Wrong !", Toast.LENGTH_SHORT).show()
 
         }
 
     }
 
+    //function for start the time
     private fun startTimer() {
+        //set countdown timer and count down interval as 1000 mills
         countDownTimer = object : CountDownTimer(timer, 1000) {
-            //            end of timer
+            //end of timer
             override fun onFinish() {
+                //assign values to variables
+                val marks = correctAnswers.toString()
+                val incorrectAns = incorrectAnswers.toString()
 
-                Toast.makeText(
-                    applicationContext,
-                    "end timer $correct_answers ",
-                    Toast.LENGTH_SHORT
-                ).show()
-
-                val marks = correct_answers.toString()
-                val incorrect_ans=incorrect_answers.toString()
-
+                //creates new intent and parse values
                 intent = Intent(this@GameActivity, MarksActivity::class.java).also {
                     it.putExtra("CORRECT_ANS", marks)
-                    it.putExtra("INCORRECT_ANS",incorrect_ans)
+                    it.putExtra("INCORRECT_ANS", incorrectAns)
                     startActivity(it)
+                    //end this context
                     finish()
                 }
 
@@ -179,12 +207,12 @@ class GameActivity : AppCompatActivity() {
         }.start()
     }
 
-    //    btn pause
+    //pause timer
     private fun pauseTimer() {
         countDownTimer.cancel()
     }
 
-    //    btn restart
+    //restart timer
     private fun restTimer() {
         countDownTimer.cancel()
         timer += 10000
@@ -195,15 +223,21 @@ class GameActivity : AppCompatActivity() {
     fun setTextTimer() {
         var m = (timer / 1000) / 60
         var s = (timer / 1000) % 60
-
+        //set format
         var format = String.format("%02d:%02d", m, s)
+        //set timer as textview
         var time = findViewById<TextView>(R.id.time_view)
-        time.setText(format)
+        //set text
+        time.text = format
     }
 
-    fun textAnimation(textView: TextView){
+
+    //set text animation
+    private fun textAnimation(textView: TextView) {
         textView.animate().apply {
-            duration =550
+            //set duration
+            duration = 550
+            //set rotaion
             rotationYBy(360f)
 
         }.start()

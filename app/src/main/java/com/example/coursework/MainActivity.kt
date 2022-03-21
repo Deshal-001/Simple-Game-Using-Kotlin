@@ -14,9 +14,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar?.hide()  //hide action bar
-        intent=Intent(this,HomeActivity::class.java)
+        //create new intent and navigate to home activity
+        intent = Intent(this, HomeActivity::class.java)
+        //start new activity
         startActivity(intent)
-
 
 
     }

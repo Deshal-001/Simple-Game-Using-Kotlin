@@ -4,7 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.PopupWindow
+import android.widget.TextView
 
 class MenuActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,8 +17,12 @@ class MenuActivity : AppCompatActivity() {
         val aboutButton = findViewById<Button>(R.id.about)
         val newgameButton = findViewById<Button>(R.id.newgame)
 
-        aboutPage(aboutButton)
+        val logo=findViewById<ImageView>(R.id.logo)
+        logo.setOnClickListener {
+            logoAnimation(logo)
+        }
 
+        aboutPage(aboutButton)
         newGamePage(newgameButton)
     }
     private fun newGamePage(newgameButton: Button) {
@@ -40,5 +46,14 @@ class MenuActivity : AppCompatActivity() {
         }
 
 
+    }
+    private fun logoAnimation(logoView: ImageView) {
+        logoView.animate().apply {
+            //set duration
+            duration = 550
+            //set rotaion
+            rotationYBy(360f)
+
+        }.start()
     }
 }
